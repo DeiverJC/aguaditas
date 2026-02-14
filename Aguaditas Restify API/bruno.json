@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Aguaditas Restify API",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

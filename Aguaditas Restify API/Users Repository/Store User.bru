@@ -1,0 +1,28 @@
+meta {
+  name: Store User
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{base_url}}/api/restify/users
+  body: json
+  auth: inherit
+}
+
+headers {
+  Accept: application/json
+  Authorization: Bearer {{token}}
+}
+
+body:json {
+  {
+      "name": "New User",
+      "email": "new@aguaditas.com",
+      "password": "password"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

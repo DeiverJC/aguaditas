@@ -1,0 +1,35 @@
+meta {
+  name: Login
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{base_url}}/api/login
+  body: json
+  auth: inherit
+}
+
+headers {
+  Accept: application/json
+}
+
+body:json {
+  {
+      "email": "admin@aguaditas.com",
+      "password": "password"
+  }
+}
+
+script:post-response {
+  if (res.getStatus() === 200) {
+      var jsonData = res.getBody();
+      if (jsonData.meta && jsonData.meta.token) {
+          bru.setVar("token", jsonData.meta.token);
+      }
+  }
+}
+
+settings {
+  encodeUrl: true
+}
