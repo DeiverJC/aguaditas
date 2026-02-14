@@ -23,6 +23,8 @@ class RestifyServiceProvider extends RestifyApplicationServiceProvider
             \App\Restify\ProductRepository::class,
             \App\Restify\ClientRepository::class,
             \App\Restify\OrderRepository::class,
+            \App\Restify\InventoryAdjustmentRepository::class,
+            \App\Restify\InventoryAdjustmentItemRepository::class,
         ]);
     }
 
