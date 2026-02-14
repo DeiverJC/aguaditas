@@ -3,11 +3,8 @@
 namespace App\Restify;
 
 use App\Models\Product;
-use App\Restify\Repository;
-use Binaryk\LaravelRestify\Http\Requests\RestifyRequest;
-
-
 use Binaryk\LaravelRestify\Fields\Field;
+use Binaryk\LaravelRestify\Http\Requests\RestifyRequest;
 
 class ProductRepository extends Repository
 {

@@ -10,12 +10,12 @@ class ProductPolicy
 {
     use HandlesAuthorization;
 
-    public function allowRestify(User $user = null): bool
+    public function allowRestify(?User $user = null): bool
     {
         return $user !== null;
     }
 
-    public function show(User $user = null, Product $model): bool
+    public function show(?User $user, Product $model): bool
     {
         return true;
     }

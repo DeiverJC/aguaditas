@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Gate;
 use Binaryk\LaravelRestify\RestifyApplicationServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 class RestifyServiceProvider extends RestifyApplicationServiceProvider
 {
@@ -11,13 +11,9 @@ class RestifyServiceProvider extends RestifyApplicationServiceProvider
      * Register the Restify gate.
      *
      * This gate determines who can access Restify in non-local environments.
-     *
-     * @return void
      */
     /**
      * Register the Restify repositories.
-     *
-     * @return void
      */
     protected function repositories(): void
     {
@@ -34,8 +30,6 @@ class RestifyServiceProvider extends RestifyApplicationServiceProvider
      * Register the Restify gate.
      *
      * This gate determines who can access Restify in non-local environments.
-     *
-     * @return void
      */
     protected function gate(): void
     {

@@ -10,12 +10,12 @@ class OrderPolicy
 {
     use HandlesAuthorization;
 
-    public function allowRestify(User $user = null): bool
+    public function allowRestify(?User $user = null): bool
     {
         return $user !== null;
     }
 
-    public function show(User $user = null, Order $model): bool
+    public function show(?User $user, Order $model): bool
     {
         return true;
     }

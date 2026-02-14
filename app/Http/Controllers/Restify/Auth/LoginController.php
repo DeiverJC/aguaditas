@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Restify\Auth;
 
 use App\Models\User;

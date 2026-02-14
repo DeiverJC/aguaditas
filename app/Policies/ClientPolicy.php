@@ -10,12 +10,12 @@ class ClientPolicy
 {
     use HandlesAuthorization;
 
-    public function allowRestify(User $user = null): bool
+    public function allowRestify(?User $user = null): bool
     {
         return $user !== null;
     }
 
-    public function show(User $user = null, Client $model): bool
+    public function show(?User $user, Client $model): bool
     {
         return true;
     }
