@@ -1,11 +1,11 @@
 meta {
-  name: Profile
+  name: Logout
   type: http
-  seq: 2
+  seq: 4
 }
 
-get {
-  url: {{base_url}}/api/restify/profile
+post {
+  url: {{base_url}}/api/logout
   body: none
   auth: inherit
 }

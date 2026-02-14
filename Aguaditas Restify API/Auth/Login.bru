@@ -24,7 +24,7 @@ body:json {
 script:post-response {
   if (res.getStatus() === 200) {
       var jsonData = res.getBody();
-      if (jsonData.meta && jsonData.meta.token) {
+      if (jsonData.meta.token) {
           bru.setVar("token", jsonData.meta.token);
       }
   }
@@ -32,4 +32,5 @@ script:post-response {
 
 settings {
   encodeUrl: true
+  timeout: 0
 }

@@ -1,0 +1,28 @@
+meta {
+  name: Store Order
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{base_url}}/api/restify/orders
+  body: json
+  auth: inherit
+}
+
+headers {
+  Accept: application/json
+  Authorization: Bearer {{token}}
+}
+
+body:json {
+  {
+    "client_id": 3,
+    "items": [
+      {
+        "product_id": 1,
+        "quantity": 2
+      }
+    ]
+  }
+}

@@ -16,10 +16,11 @@ headers {
 
 body:json {
   {
-      "name": "Test User",
-      "email": "test@aguaditas.com",
-      "password": "password",
-      "password_confirmation": "password"
+    "name": "Test User",
+    "email": "test@aguaditas.com",
+    "password": "password",
+    "password_confirmation": "password",
+    "role": "repartidor"
   }
 }
 
@@ -34,4 +35,5 @@ script:post-response {
 
 settings {
   encodeUrl: true
+  timeout: 0
 }

@@ -1,0 +1,24 @@
+meta {
+  name: Store Client
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{base_url}}/api/restify/clients
+  body: json
+  auth: inherit
+}
+
+headers {
+  Accept: application/json
+  Authorization: Bearer {{token}}
+}
+
+body:json {
+  {
+    "name": "New Client",
+    "phone": "3001234567",
+    "address": "Calle 123"
+  }
+}

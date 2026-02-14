@@ -1,0 +1,25 @@
+meta {
+  name: Store Product
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{base_url}}/api/restify/products
+  body: json
+  auth: inherit
+}
+
+headers {
+  Accept: application/json
+  Authorization: Bearer {{token}}
+}
+
+body:json {
+  {
+    "name": "New Product",
+    "sku": "SKU123",
+    "unit_type": "unidad",
+    "sale_price": 1000
+  }
+}
