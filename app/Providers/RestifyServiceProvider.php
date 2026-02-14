@@ -14,12 +14,33 @@ class RestifyServiceProvider extends RestifyApplicationServiceProvider
      *
      * @return void
      */
+    /**
+     * Register the Restify repositories.
+     *
+     * @return void
+     */
+    protected function repositories(): void
+    {
+        // Manual registration if auto-discovery fails
+        \Binaryk\LaravelRestify\Restify::repositories([
+            \App\Restify\UserRepository::class,
+            \App\Restify\ProductRepository::class,
+            \App\Restify\ClientRepository::class,
+            \App\Restify\OrderRepository::class,
+        ]);
+    }
+
+    /**
+     * Register the Restify gate.
+     *
+     * This gate determines who can access Restify in non-local environments.
+     *
+     * @return void
+     */
     protected function gate(): void
     {
         Gate::define('viewRestify', function ($user) {
-            return in_array($user->email, [
-                //
-            ]);
+            return true; // Allow all authenticated users for now, or check role
         });
     }
 }

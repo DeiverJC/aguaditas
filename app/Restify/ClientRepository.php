@@ -2,24 +2,26 @@
 
 namespace App\Restify;
 
-use App\Models\User;
+use App\Models\Client;
 use App\Restify\Repository;
 use Binaryk\LaravelRestify\Http\Requests\RestifyRequest;
 
+
 use Binaryk\LaravelRestify\Fields\Field;
 
-class UserRepository extends Repository
+class ClientRepository extends Repository
 {
-    public static string $model = User::class;
+    public static string $model = Client::class;
 
     public function fields(RestifyRequest $request): array
     {
         return [
             Field::make('id')->readonly(),
             Field::make('name')->required(),
-            Field::make('email')->required(),
-            Field::make('role')->rules('in:admin,repartidor')->required(),
-            Field::make('password')->required()->hidden(), // hidden in response
+            Field::make('phone')->nullable(),
+            Field::make('address')->nullable(),
+            Field::make('created_at')->readonly(),
+            Field::make('updated_at')->readonly(),
         ];
     }
 }

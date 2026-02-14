@@ -2,26 +2,22 @@
 
 namespace App\Policies;
 
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class UserPolicy
+class ProductPolicy
 {
     use HandlesAuthorization;
 
     public function allowRestify(User $user = null): bool
     {
+        return $user !== null;
+    }
+
+    public function show(User $user = null, Product $model): bool
+    {
         return true;
-    }
-
-    public function show(User $user, User $model): bool
-    {
-        return $user->role === 'admin' || $user->id === $model->id;
-    }
-
-    public function viewAny(User $user): bool
-    {
-        return $user->role === 'admin';
     }
 
     public function store(User $user): bool
@@ -34,22 +30,22 @@ class UserPolicy
         return $user->role === 'admin';
     }
 
-    public function update(User $user, User $model): bool
-    {
-        return $user->role === 'admin' || $user->id === $model->id;
-    }
-
-    public function updateBulk(User $user, User $model): bool
+    public function update(User $user, Product $model): bool
     {
         return $user->role === 'admin';
     }
 
-    public function deleteBulk(User $user, User $model): bool
+    public function updateBulk(User $user, Product $model): bool
     {
         return $user->role === 'admin';
     }
 
-    public function delete(User $user, User $model): bool
+    public function deleteBulk(User $user, Product $model): bool
+    {
+        return $user->role === 'admin';
+    }
+
+    public function delete(User $user, Product $model): bool
     {
         return $user->role === 'admin';
     }
