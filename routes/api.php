@@ -11,8 +11,8 @@ Route::post('login', \App\Http\Controllers\Restify\Auth\LoginController::class)
     ->middleware('throttle:6,1')
     ->name('restify.login');
 
-Route::post('register', \App\Http\Controllers\Restify\Auth\RegisterController::class)
-    ->name('restify.register');
+// Route::post('register', \App\Http\Controllers\Restify\Auth\RegisterController::class)
+//     ->name('restify.register');
 
 Route::post('forgotPassword', \App\Http\Controllers\Restify\Auth\ForgotPasswordController::class)
     ->middleware('throttle:6,1')
