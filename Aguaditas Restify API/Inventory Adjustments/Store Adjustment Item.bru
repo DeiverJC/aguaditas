@@ -1,0 +1,24 @@
+meta {
+  name: Store Adjustment Item
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{base_url}}/api/restify/inventory-adjustment-items
+  body: json
+  auth: inherit
+}
+
+headers {
+  Accept: application/json
+  Authorization: Bearer {{token}}
+}
+
+body:json {
+  {
+    "adjustment": 1,
+    "product": 1,
+    "quantity": 10
+  }
+}

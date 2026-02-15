@@ -1,0 +1,20 @@
+meta {
+  name: List Adjustments
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{base_url}}/api/restify/inventory-adjustments?related=user
+  body: none
+  auth: inherit
+}
+
+params:query {
+  related: user
+}
+
+headers {
+  Accept: application/json
+  Authorization: Bearer {{token}}
+}

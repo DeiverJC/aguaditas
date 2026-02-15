@@ -1,0 +1,22 @@
+meta {
+  name: Update Adjustment Item
+  type: http
+  seq: 5
+}
+
+patch {
+  url: {{base_url}}/api/restify/inventory-adjustment-items/1
+  body: json
+  auth: inherit
+}
+
+headers {
+  Accept: application/json
+  Authorization: Bearer {{token}}
+}
+
+body:json {
+  {
+    "quantity": 15
+  }
+}
