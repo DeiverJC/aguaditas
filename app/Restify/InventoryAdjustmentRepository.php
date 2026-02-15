@@ -17,14 +17,18 @@ class InventoryAdjustmentRepository extends Repository
 
     public static string $uriKey = 'inventory-adjustments';
 
+    public function authorizedToUpdate(Request $request): bool
+    {
+        return true;
+    }
+
     public function fields(RestifyRequest $request): array
     {
         return [
             Field::make('id')->readonly(),
             
-            BelongsTo::make('user', 'user', UserRepository::class)
-                ->rules('required')
-                ->canSee(fn($request) => $request->user()->can('view', $this->resource)),
+            Field::make('user_id')
+                ->storeRules('required'),
 
             Field::make('type')->rules('required', 'in:input,output'),
             
@@ -32,7 +36,7 @@ class InventoryAdjustmentRepository extends Repository
             
             Field::make('status')
                 ->readonly()
-                ->value(fn() => $this->resource->status ?? 'draft'),
+                ->default('draft'),
 
             Field::make('finalized_at')->readonly(),
             
@@ -40,6 +44,14 @@ class InventoryAdjustmentRepository extends Repository
             Field::make('updated_at')->readonly(),
 
             HasMany::make('items', 'items', InventoryAdjustmentItemRepository::class),
+        ];
+    }
+
+    public static function related(): array
+    {
+        return [
+            'user' => UserRepository::class,
+            'items' => InventoryAdjustmentItemRepository::class,
         ];
     }
 

@@ -29,4 +29,12 @@ class InventoryAdjustmentItemRepository extends Repository
             Field::make('updated_at')->readonly(),
         ];
     }
+
+    public static function related(): array
+    {
+        return [
+            'adjustment' => InventoryAdjustmentRepository::class,
+            'product' => ProductRepository::class,
+        ];
+    }
 }

@@ -66,4 +66,14 @@ class InventoryAdjustmentItemPolicy
     {
         return false;
     }
+
+    public function attachInventoryAdjustment(User $user, InventoryAdjustmentItem $inventoryAdjustmentItem): bool
+    {
+        return true;
+    }
+
+    public function attachProduct(User $user, InventoryAdjustmentItem $inventoryAdjustmentItem): bool
+    {
+        return true;
+    }
 }

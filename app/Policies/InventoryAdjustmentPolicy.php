@@ -81,4 +81,9 @@ class InventoryAdjustmentPolicy
     {
         return false;
     }
+
+    public function attachUser(User $user, InventoryAdjustment $inventoryAdjustment): bool
+    {
+        return true;
+    }
 }

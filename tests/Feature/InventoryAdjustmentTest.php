@@ -31,7 +31,7 @@ test('can create a draft inventory adjustment', function () {
         ->postJson('/api/restify/inventory-adjustments', [
             'type' => 'input',
             'description' => 'Initial stock',
-            'user' => $this->user->id,
+            'user_id' => $this->user->id,
         ])
         ->assertCreated()
         ->assertJsonPath('data.attributes.status', 'draft');
@@ -131,5 +131,23 @@ test('can finalize an output adjustment and decrease stock', function () {
     $this->assertDatabaseHas('inventories', [
         'product_id' => $this->product->id,
         'current_stock' => 15, // 20 - 5
+    ]);
+});
+
+test('can update inventory adjustment description', function () {
+    $adjustment = InventoryAdjustment::factory()->create([
+        'user_id' => $this->user->id,
+        'status' => 'draft',
+    ]);
+
+    actingAs($this->user, 'sanctum')
+        ->patchJson("/api/restify/inventory-adjustments/{$adjustment->id}", [
+            'description' => 'Updated Description',
+        ])
+        ->assertSuccessful();
+
+    $this->assertDatabaseHas('inventory_adjustments', [
+        'id' => $adjustment->id,
+        'description' => 'Updated Description',
     ]);
 });
